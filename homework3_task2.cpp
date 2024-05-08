@@ -4,7 +4,7 @@
 #include <string>
 #include <algorithm>
 
-// Функция для нахождения высоты каждого элемента в генеалогическом древе
+// Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГї ГўГ»Г±Г®ГІГ» ГЄГ Г¦Г¤Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў ГЈГҐГ­ГҐГ Г«Г®ГЈГЁГ·ГҐГ±ГЄГ®Г¬ Г¤Г°ГҐГўГҐ
 void findHeight(std::map<std::string, std::string>& familyTree, std::map<std::string, int>& heights, const std::string& current, int height) {
     heights[current] = height;
     for (const auto& entry : familyTree) {
@@ -21,21 +21,21 @@ int main() {
     std::map<std::string, std::string> familyTree;
     std::map<std::string, int> heights;
 
-    // Считываем отношения родитель-потомок
+    // Г‘Г·ГЁГІГ»ГўГ ГҐГ¬ Г®ГІГ­Г®ГёГҐГ­ГЁГї Г°Г®Г¤ГЁГІГҐГ«Гј-ГЇГ®ГІГ®Г¬Г®ГЄ
     for (int i = 0; i < N - 1; ++i) {
         std::string child, parent;
         std::cin >> child >> parent;
         familyTree[child] = parent;
     }
 
-    // Находим высоту каждого элемента
+    // ГЌГ ГµГ®Г¤ГЁГ¬ ГўГ»Г±Г®ГІГі ГЄГ Г¦Г¤Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
     for (const auto& entry : familyTree) {
-        if (entry.second.empty()) { // Если это родоначальник
+        if (entry.second.empty()) { // Г…Г±Г«ГЁ ГЅГІГ® Г°Г®Г¤Г®Г­Г Г·Г Г«ГјГ­ГЁГЄ
             findHeight(familyTree, heights, entry.first, 0);
         }
     }
 
-    // Выводим элементы в лексикографическом порядке с их высотой
+    // Г‚Г»ГўГ®Г¤ГЁГ¬ ГЅГ«ГҐГ¬ГҐГ­ГІГ» Гў Г«ГҐГЄГ±ГЁГЄГ®ГЈГ°Г ГґГЁГ·ГҐГ±ГЄГ®Г¬ ГЇГ®Г°ГїГ¤ГЄГҐ Г± ГЁГµ ГўГ»Г±Г®ГІГ®Г©
     for (const auto& entry : heights) {
         std::cout << entry.first << " " << entry.second << std::endl;
     }
