@@ -4,54 +4,54 @@
 #include <random>
 #include <chrono>
 
-// Генератор случайных чисел
+// ГѓГҐГ­ГҐГ°Г ГІГ®Г° Г±Г«ГіГ·Г Г©Г­Г»Гµ Г·ГЁГ±ГҐГ«
 std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
 
-// Генерация случайного числа в заданном диапазоне
+// ГѓГҐГ­ГҐГ°Г Г¶ГЁГї Г±Г«ГіГ·Г Г©Г­Г®ГЈГ® Г·ГЁГ±Г«Г  Гў Г§Г Г¤Г Г­Г­Г®Г¬ Г¤ГЁГ ГЇГ Г§Г®Г­ГҐ
 int random_int(int min, int max) {
     std::uniform_int_distribution<int> dist(min, max);
     return dist(rng);
 }
 
-// Сортировка слиянием
+// Г‘Г®Г°ГІГЁГ°Г®ГўГЄГ  Г±Г«ГЁГїГ­ГЁГҐГ¬
 void merge(std::vector<int>& arr, int l, int m, int r) {
-    // Реализация слияния
+    // ГђГҐГ Г«ГЁГ§Г Г¶ГЁГї Г±Г«ГЁГїГ­ГЁГї
 }
 
 void mergeSort(std::vector<int>& arr, int l, int r) {
-    // Реализация сортировки слиянием
+    // ГђГҐГ Г«ГЁГ§Г Г¶ГЁГї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ Г±Г«ГЁГїГ­ГЁГҐГ¬
 }
 
-// Быстрая сортировка
+// ГЃГ»Г±ГІГ°Г Гї Г±Г®Г°ГІГЁГ°Г®ГўГЄГ 
 void quickSort(std::vector<int>& arr, int low, int high) {
-    // Реализация быстрой сортировки
+    // ГђГҐГ Г«ГЁГ§Г Г¶ГЁГї ГЎГ»Г±ГІГ°Г®Г© Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ
 }
 
 int main() {
     const int size = 10000;
     std::vector<int> arr(size);
 
-    // Заполнение массива случайными числами
+    // Г‡Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г¬Г Г±Г±ГЁГўГ  Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г·ГЁГ±Г«Г Г¬ГЁ
     for (int i = 0; i < size; ++i) {
         arr[i] = random_int(1, 10000);
     }
 
-    // Копия массива для быстрой сортировки
+    // ГЉГ®ГЇГЁГї Г¬Г Г±Г±ГЁГўГ  Г¤Г«Гї ГЎГ»Г±ГІГ°Г®Г© Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ
     std::vector<int> arr_quick = arr;
 
-    // Измерение времени для сортировки слиянием
+    // Г€Г§Г¬ГҐГ°ГҐГ­ГЁГҐ ГўГ°ГҐГ¬ГҐГ­ГЁ Г¤Г«Гї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ Г±Г«ГЁГїГ­ГЁГҐГ¬
     auto start_merge = std::chrono::high_resolution_clock::now();
     mergeSort(arr, 0, size - 1);
     auto end_merge = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration_merge = end_merge - start_merge;
 
-    // Измерение времени для быстрой сортировки
+    // Г€Г§Г¬ГҐГ°ГҐГ­ГЁГҐ ГўГ°ГҐГ¬ГҐГ­ГЁ Г¤Г«Гї ГЎГ»Г±ГІГ°Г®Г© Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ
     auto start_quick = std::chrono::high_resolution_clock::now();
     quickSort(arr_quick, 0, size - 1);
     auto end_quick = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration_quick = end_quick - start_quick;
 
-    // Вывод результатов
+    // Г‚Г»ГўГ®Г¤ Г°ГҐГ§ГіГ«ГјГІГ ГІГ®Гў
     if (duration_merge < duration_quick) {
         std::cout << "Merge sort is faster. Time:" << duration_merge.count() << " sekonds." << std::endl;
     }
