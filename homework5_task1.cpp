@@ -17,7 +17,7 @@ int main() {
     const int numThreads = 4;
     std::vector<int> arr(size);
 
-    // Заполнение массива случайными числами
+    // Г‡Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г¬Г Г±Г±ГЁГўГ  Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г·ГЁГ±Г«Г Г¬ГЁ
     srand(time(NULL));
     for (int i = 0; i < size; ++i) {
         arr[i] = rand() % 1000;
@@ -26,14 +26,14 @@ int main() {
     int sum = 0;
     std::vector<std::thread> threads;
 
-    // Создание и запуск потоков
+    // Г‘Г®Г§Г¤Г Г­ГЁГҐ ГЁ Г§Г ГЇГіГ±ГЄ ГЇГ®ГІГ®ГЄГ®Гў
     for (int i = 0; i < numThreads; ++i) {
         int start = i * (size / numThreads);
         int end = (i == numThreads - 1) ? size : (i + 1) * (size / numThreads);
         threads.push_back(std::thread(findSumOfThreeLargest, std::ref(arr), std::ref(sum), start, end));
     }
 
-    // Дождаться завершения всех потоков
+    // Г„Г®Г¦Г¤Г ГІГјГ±Гї Г§Г ГўГҐГ°ГёГҐГ­ГЁГї ГўГ±ГҐГµ ГЇГ®ГІГ®ГЄГ®Гў
     for (auto& t : threads) {
         t.join();
     }
