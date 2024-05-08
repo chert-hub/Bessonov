@@ -46,7 +46,7 @@ public:
             if (currentHead == head) {
                 if (currentHead == currentTail) {
                     if (firstNode == nullptr) {
-                        return T(); // Возвращаем значение по умолчанию, если очередь пуста
+                        return T(); // Г‚Г®Г§ГўГ°Г Г№Г ГҐГ¬ Г§Г­Г Г·ГҐГ­ГЁГҐ ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ, ГҐГ±Г«ГЁ Г®Г·ГҐГ°ГҐГ¤Гј ГЇГіГ±ГІГ 
                     }
                     tail.compare_exchange_strong(currentTail, firstNode);
                 }
@@ -65,14 +65,14 @@ public:
 int main() {
     LockFreeQueue<int> queue;
 
-    // Поток 1 добавляет элементы в очередь
+    // ГЏГ®ГІГ®ГЄ 1 Г¤Г®ГЎГ ГўГ«ГїГҐГІ ГЅГ«ГҐГ¬ГҐГ­ГІГ» Гў Г®Г·ГҐГ°ГҐГ¤Гј
     std::thread t1([&queue]() {
         for (int i = 0; i < 10; ++i) {
             queue.push(i);
         }
         });
 
-    // Поток 2 извлекает элементы из очереди
+    // ГЏГ®ГІГ®ГЄ 2 ГЁГ§ГўГ«ГҐГЄГ ГҐГІ ГЅГ«ГҐГ¬ГҐГ­ГІГ» ГЁГ§ Г®Г·ГҐГ°ГҐГ¤ГЁ
     std::thread t2([&queue]() {
         for (int i = 0; i < 10; ++i) {
             std::cout << "Popped: " << queue.pop() << std::endl;
